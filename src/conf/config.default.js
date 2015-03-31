@@ -12,8 +12,8 @@ conf.server = {
     baseUrl: 'http://localhost',
     port: 9099,
     logs: {
-        log: '/tmp/psi-server.log',
-        error: '/tmp/psi-server.err'
+        jobLog: '/tmp/psi-jobs.log',
+        jobError: '/tmp/psi-jobs.err'
     }
 };
 

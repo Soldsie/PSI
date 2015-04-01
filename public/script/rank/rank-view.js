@@ -1,7 +1,7 @@
 window.psi = window.psi || {};
 window.psi.view = window.psi.view || {};
 
-window.psi.view.RankView = Backbone.Epoxy.View.extend({
+window.psi.view.RankItemView = Backbone.Epoxy.View.extend({
     tagName: 'li',
     className: 'list-group-item',
     initialize: function(options) {
@@ -10,15 +10,15 @@ window.psi.view.RankView = Backbone.Epoxy.View.extend({
     },
 
     render: function() {
-        var rendered = Mustache.render(this.$template.html(), this.model);
+        var rendered = Mustache.render(this.$template.html(), this.model.toJSON());
         this.$el.html(rendered);
         return this;
     }
 });
 
-window.psi.view.RankListView = Backbone.Epoxy.View.extend({
+window.psi.view.RankView = Backbone.Epoxy.View.extend({
     initialize: function(options) {
-        this.collection = options.collection;
+        this.model = options.model;
         this.el = options.el;
         this.$rankTemplate = options.rankTemplate;
         this.render();        
@@ -26,12 +26,12 @@ window.psi.view.RankListView = Backbone.Epoxy.View.extend({
 
     render: function() {
         var _self = this;
-        _.each(this.collection, function(rankModel) {
-            var rankView = new window.psi.view.RankView({
-                model: rankModel,
+        _.each(this.model.get('ranking'), function(rankItem) {
+            var rankItemView = new window.psi.view.RankItemView({
+                model: new window.psi.model.RankItem(rankItem),
                 template: _self.$rankTemplate
             });
-            _self.$el.append(rankView.render().el);
+            _self.$el.append(rankItemView.render().el);
         });
         return this;
     }

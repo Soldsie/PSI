@@ -1,7 +1,7 @@
 window.psi = window.psi || {};
 window.psi.model = window.psi.model || {};
 
-window.psi.model.Rank = Backbone.Model.extend({
+window.psi.model.RankItem = Backbone.Model.extend({
     defaults: {
         rank: 0,
         logo: '',
@@ -11,6 +11,11 @@ window.psi.model.Rank = Backbone.Model.extend({
     }
 });
 
-window.psi.model.RankCollection = Backbone.Collection.extend({
-    model: window.psi.model.Rank
+window.psi.model.Rank = Backbone.Model.extend({
+    defaults: {
+        category: '',
+        ranking: []
+    },
+
+    url: '/api/rank/purse'
 });

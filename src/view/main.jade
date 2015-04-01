@@ -22,14 +22,20 @@ html(lang='en')
                 a(id='cat-{{name}}', class='nav-link', href='#')= '{{name}}'
             | {{/categories}}
         // --- result list template ---
-        script(id='template-rl', type='html/template')            
-            span(style='font-size: 16px; font-weight: bold; margin-right: 10px;')= '{{rank}}'
-            span
-                img(src='/static/image/brand-logo/{{logo}}', width=150, height=150, style='margin-right: 10px;')
-            span(style='font-size: 20px; font-weight: bold;')= '{{brandName}}'
-            span(class='badge')= '{{comments}}'
-            span(class='badge')= '{{likes}}'
-            span(class='badge')= '{{score}}'
+        script(id='template-rl', type='html/template')
+            div(class='row')
+                div(class='col-xs-2 col-md-2')
+                    p(style='font-size: 16px; font-weight: bold; margin-right: 10px;')= '{{rank}}'
+                div(class='col-xs-4 col-md-4')
+                    span
+                        img(src='/static/image/brand-logo/{{logo}}', width=150, height=150, style='margin-right: 10px;')
+                    span(style='font-size: 20px; font-weight: bold;')= '{{brandName}}'
+                div(class='col-xs-2 col-md-2')
+                    span(class='badge')= '{{score}}'
+                div(class='col-xs-2 col-md-2')
+                    span(class='badge')= '{{likes}}'
+                div(class='col-xs-2 col-md-2')
+                    span(class='badge')= '{{comments}}'                    
 
         // ======= actual HTML content ========    
         div(class='container')
@@ -44,9 +50,18 @@ html(lang='en')
                                 h4 Categories
                             ul(id='cat-container', class='nav navbar-nav')
                 // === rank list view ===
-                div(class='row')
-                    div(class='col-xs-12 col-md-12')
-                        ul(id='rank-container', class='list-group')
+                div(id='rank-container', class='col-xs-12 col-md-12')                
+                    div(class='row')
+                        div(class='col-xs-2 col-md-2')
+                            h4 Rank
+                        div(class='col-xs-4 col-md-4')
+                            h4 Brand
+                        div(class='col-xs-2 col-md-2')
+                            h4 Score
+                        div(class='col-xs-2 col-md-2')
+                            h4 Likes
+                        div(class='col-xs-2 col-md-2')
+                            h4 Comments
 
         // category view
         script(src='/static/script/category/category-model.js')

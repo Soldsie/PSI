@@ -10,8 +10,8 @@ var routes = require('./routes');
 var constants = require('./src/constants');
 var lessMiddleware = require('less-middleware');
 var util = require('util');
+var mongoose = require('mongoose')
 var config = require('./src/util/conf-loader').load();
-
 
 http.globalAgent.maxSockets = 20;
 https.globalAgent.maxSockets = 20;
@@ -56,8 +56,18 @@ var setupUiRendering = function(app) {
     app.use('/static', express.static('public'));
 };
 
+var initDatabase = function(credentials) {
+    mongoose.connect('mongodb://' + credentials.user + ':' + credentials.password + '@' + credentials.url + '/' + credentials.name);
+    var db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error:'));
+    db.once('open', function (callback) {
+        console.log('database connected');         
+    });
+}
+
 var app = express();
 setupUiRendering(app);
 setupMiddleware(app);
+initDatabase(config.database);
 app.listen(config.server.port);
 logger.info('PSI web server started.')

@@ -60,3 +60,4 @@ var app = express();
 setupUiRendering(app);
 setupMiddleware(app);
 app.listen(config.server.port);
+logger.info('PSI web server started.')

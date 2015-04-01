@@ -15,27 +15,42 @@ html(lang='en')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js')
         script(src='http://cdn.lukej.me/backbone.epoxy/1.2/backbone.epoxy.min.js')
     body
-        // templates
+        // --- category template ---
         script(id='template-cat', type='html/template')
             | {{#categories}}
             li(class='cat-wrapper {{navClass}}')
                 a(id='cat-{{name}}', class='nav-link', href='#')= '{{name}}'
             | {{/categories}}
+        // --- result list template ---
+        script(id='template-rl', type='html/template')            
+            span(style='font-size: 16px; font-weight: bold; margin-right: 10px;')= '{{rank}}'
+            span
+                img(src='/static/image/brand-logo/{{logo}}', width=150, height=150, style='margin-right: 10px;')
+            span(style='font-size: 20px; font-weight: bold;')= '{{brandName}}'
+            span(class='badge')= '{{comments}}'
+            span(class='badge')= '{{likes}}'
+            span(class='badge')= '{{score}}'
 
-        // actual HTML content
+        // ======= actual HTML content ========    
         div(class='container')
             div(class='row')
                 div(class='col-xs-12 col-md-12')
                     h1 Product Social Index
+                // === category view ===
                 div(id='prod-cats', class='col-xs-12 col-md-12')
                     nav(class='navbar navbar-default navbar-static-top')
                         div(class='container')
                             div(class='navbar-header')
                                 h4 Categories
                             ul(id='cat-container', class='nav navbar-nav')
-
+                // === rank list view ===
+                div(class='row')
+                    div(class='col-xs-12 col-md-12')
+                        ul(id='rank-container', class='list-group')
 
         // category view
         script(src='/static/script/category/category-model.js')
         script(src='/static/script/category/category-view.js')
+        script(src='/static/script/rank/rank-model.js')
+        script(src='/static/script/rank/rank-view.js')
         script(src='/static/script/main.js')

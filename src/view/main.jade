@@ -30,7 +30,8 @@ html(lang='en')
                     p(style='font-size: 16px; font-weight: bold; margin-right: 10px;')= '{{rank}}'
                 div(class='col-xs-4 col-md-4')
                     span
-                        img(src='/image/brand-logo/{{logo}}', width=150, height=150, style='margin-right: 10px;')
+                        a(href='{{url}}', target='_blank')
+                            img(src='/image/brand-logo/{{logo}}', width=150, height=150, style='margin-right: 10px;')
                     span(style='font-size: 20px; font-weight: bold;')= '{{brandName}}'
                 div(class='col-xs-2 col-md-2')
                     span(class='badge')= '{{score}}'

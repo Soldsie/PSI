@@ -13,12 +13,7 @@ var accountant = require('../service/accountant.js')
 
 var renderPage = function(req, res) {
     // instagram.getRecentTagMedia('michaelkors', {});   // for testing
-    var tags = ['michaelkorspurse', 'coachpurse', 'louisvuittonpurse', 'pradapurse', 'hermespurse', 'guccipurse', 'versacepurse'];
-
-    // (function(tag){
-    //   instagram.getRecentTagMedia(tag, {});   // for testing
-    // })(tags[6])
-    accountant.score();
+    var brands = ['michaelkorspurse', 'coachpurse', 'louisvuittonpurse', 'pradapurse', 'hermespurse', 'guccipurse', 'versacepurse'];
 
     res.render('main');
 };

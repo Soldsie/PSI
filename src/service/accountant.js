@@ -26,11 +26,8 @@ o.reduce = function (k, vals) {
   return {comment: commentScore, like: likeScore };
 }
 
-var score = function() { 
-  Media.mapReduce(o, function (err, results) {
-    console.log(err);
-    console.log(results);
-  })
+var score = function(callback) { 
+  Media.mapReduce(o, callback)
 }
 
 module.exports = {

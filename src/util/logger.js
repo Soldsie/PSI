@@ -14,11 +14,15 @@ var custTimestamp = function() {
 
 var noColorConsoleTransport = new (winston.transports.Console)({
     colorize: false,
+    prettyPrint: true,
+    json: true,
     timestamp: custTimestamp
 });
 
 var coloredConsoleTransport = new (winston.transports.Console)({
     colorize: true,
+    prettyPrint: true,
+    json: true,
     timestamp: custTimestamp
 });
 

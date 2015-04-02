@@ -39,12 +39,13 @@ var setupUiRendering = function(app) {
     app.set('view engine', 'jade');
     // less middleware (dev only)
     if(constants.env === 'Development') {
-        app.use(lessMiddleware({
-            pathRoot: path.join(__dirname, 'public', 'stylesheet'),
-            src: 'less',
-            dest: 'css',
+        app.use(lessMiddleware(path.join(__dirname, 'public', 'stylesheet', 'less'), {
+            dest: path.join(__dirname, 'public'),
             force: true,
             preprocess: {
+                path: function(pathname, req) {
+                    return pathname.replace(/less\/stylesheet/i, 'less');
+                },
                 importPaths: function(paths, req) {
                     paths.push(path.join(__dirname, 'node_modules', 'bootstrap', 'less'));
                     return paths;
@@ -53,7 +54,7 @@ var setupUiRendering = function(app) {
         }));
     }
     // static
-    app.use('/static', express.static('public'));
+    app.use(express.static('public'));
 };
 
 var initDatabase = function(credentials) {

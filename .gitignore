@@ -2,4 +2,4 @@ test/.DS_Store
 node_modules/
 reports/
 coverage/
-public/stylesheet/css/
+public/stylesheet/*.css

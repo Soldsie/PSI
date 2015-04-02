@@ -6,7 +6,9 @@ html(lang='en')
         meta(name='vierport', content='width=device-width, initial-scale=1')
         title Soldsie PSI
         // bootstrap
-        link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')        
+        link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+        // custom css
+        link(rel='stylesheet', href='/stylesheet/styles.css')
         // js
         script(src='https://code.jquery.com/jquery-2.1.3.min.js')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js')
@@ -28,7 +30,7 @@ html(lang='en')
                     p(style='font-size: 16px; font-weight: bold; margin-right: 10px;')= '{{rank}}'
                 div(class='col-xs-4 col-md-4')
                     span
-                        img(src='/static/image/brand-logo/{{logo}}', width=150, height=150, style='margin-right: 10px;')
+                        img(src='/image/brand-logo/{{logo}}', width=150, height=150, style='margin-right: 10px;')
                     span(style='font-size: 20px; font-weight: bold;')= '{{brandName}}'
                 div(class='col-xs-2 col-md-2')
                     span(class='badge')= '{{score}}'
@@ -64,8 +66,8 @@ html(lang='en')
                             h4 Comments
 
         // category view
-        script(src='/static/script/category/category-model.js')
-        script(src='/static/script/category/category-view.js')
-        script(src='/static/script/rank/rank-model.js')
-        script(src='/static/script/rank/rank-view.js')
-        script(src='/static/script/main.js')
+        script(src='/script/category/category-model.js')
+        script(src='/script/category/category-view.js')
+        script(src='/script/rank/rank-model.js')
+        script(src='/script/rank/rank-view.js')
+        script(src='/script/main.js')

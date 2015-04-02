@@ -40,7 +40,7 @@ var setupUiRendering = function(app) {
     // less middleware (dev only)
     if(constants.env === 'Development') {
         app.use(lessMiddleware({
-            pathRoot: util.format('__dirname/%s/%s', 'public', 'stylesheet'),
+            pathRoot: path.join(__dirname, 'public', 'stylesheet'),
             src: 'less',
             dest: 'css',
             force: true,
@@ -53,7 +53,7 @@ var setupUiRendering = function(app) {
         }));
     }
     // static
-    app.use(express.static(path.join(__dirname, 'public')));
+    app.use('/static', express.static('public'));
 };
 
 var initDatabase = function(credentials) {

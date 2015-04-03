@@ -7,7 +7,9 @@ window.psi.model.RankItem = Backbone.Model.extend({
         logo: '',
         brandName: '',        
         likes: 0,
-        comments: 0
+        comments: 0,
+        tweets: 0,
+        retweets: 0
     }
 });
 

@@ -17,9 +17,35 @@ var rankByCategory = function rankByCategory(req, res) {
     async.waterfall(
         [
             function(waterfallCallback) {
-                accountant.score(function(err, result) {
+                accountant.scoreInstagram(function(err, result) {
                     process.nextTick(function() {
                         waterfallCallback(null, result);
+                    })
+                });
+            },
+            function(instagramResults, waterfallCallback) {
+                accountant.scoreTwitter(function(err, twitterResults) {
+                    var combined = [];
+                    for(var i=0; i<twitterResults.length; i++) {
+                        for(var j=0; i<instagramResults.length; j++) {
+                            var tid = twitterResults[i].id;
+                            var iid = instagramResults[j].id;
+
+                            if(tid == iid) {
+                                var temp = instagramResults[i];
+                                temp.instagram = temp.value;
+                                delete temp.value;
+
+                                temp.twitter = twitterResults[i].value;
+                                combined.push(temp);
+                                break;
+                            } 
+
+                        }
+                    }
+                    console.log(combined);
+                    process.nextTick(function() {
+                        waterfallCallback(null, combined);
                     })
                 });
             },
@@ -45,15 +71,21 @@ var rankByCategory = function rankByCategory(req, res) {
             },
             function(brandDataWithName, waterfallCallback) {
                 var rankModels = _.map(brandDataWithName, function(data) {
-                    var randomLikes = data.value.like;
-                    var randomComments = data.value.comment;
+                    var likes = data.instagram.like;
+                    var comments = data.instagram.comment;
+
+                    var tweets = data.twitter.count;
+                    var retweets = data.twitter.retweetCount;
+
                     var brand = data.brandName
                     return {
                         logo: [brand.toLowerCase().replace(/\s/gi, '-'), '-', 'logo', '.png'].join(''),
                         brandName: brand,
-                        likes: randomLikes,
-                        comments: randomComments,
-                        score: randomLikes + randomComments * 2,
+                        likes: likes,
+                        comments: comments,
+                        tweets: tweets,
+                        retweets: retweets,
+                        score: likes + comments * 2,
                         url: data.url
                     }
                 });

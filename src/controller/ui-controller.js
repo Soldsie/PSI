@@ -12,17 +12,14 @@ var instagram  = require('../service/instagram.js');
 var twitter = require('../service/twitter.js');
 var accountant = require('../service/accountant.js');
 
+var graphData = require('../service/graph-data.js');
+
 // burberrypurse has duplicate 3 sets of data 260
 
 var renderPage = function(req, res) {
     // instagram.getRecentTagMedia('michaelkors', {});   // for testing
     var brands = ['michaelkors purse', 'coach purse', 'louisvuitton purse', 'prada purse', 'hermes purse', 'gucci purse'];
     // 176, 700, 507, 320, 60, 700
-
-    // accountant.scoreTwitter(function(err, result){
-    //   console.log(err);
-    //   console.log(result);
-    // });
 
     res.render('main');
 };

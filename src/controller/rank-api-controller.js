@@ -3,6 +3,9 @@ var _ = require('underscore')._;
 var logger = require("../util/logger.js");
 var accountant = require('../service/accountant.js')
 
+var graphData = require('../service/graph-data.js');
+
+
 var rankByCategory = function rankByCategory(req, res) {
     var category = req.params.category;
 
@@ -43,7 +46,6 @@ var rankByCategory = function rankByCategory(req, res) {
 
                         }
                     }
-                    console.log(combined);
                     process.nextTick(function() {
                         waterfallCallback(null, combined);
                     })
@@ -85,7 +87,7 @@ var rankByCategory = function rankByCategory(req, res) {
                         comments: comments,
                         tweets: tweets,
                         retweets: retweets,
-                        score: likes + comments * 2,
+                        score: likes + comments * 2 + tweets * 2 + retweets * 5,
                         url: data.url
                     }
                 });

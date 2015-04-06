@@ -26,8 +26,25 @@
             }
         });        
     };
+
+    var initGraphView = function() {
+        var graphModel = new window.psi.model.Graph({tag: ''});
+        graphModel.fetch({
+            success: function(model) {
+                console.log("SUCCESS");
+                var graphView = new window.psi.view.GraphView({
+                    model: model,
+                    el: $('#graph-container')
+                });
+            },
+            error: function(model, response, options) {
+                console.log('Error fetching model: ' + JSON.stringify(response, null, 4));
+            }
+        })
+    };
     
     // go go go
     initCategoryView();
     initResultListView();
+    initGraphView();
 }());

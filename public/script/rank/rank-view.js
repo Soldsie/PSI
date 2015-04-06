@@ -9,7 +9,7 @@ window.psi.view.RankItemView = Backbone.Epoxy.View.extend({
         this.$template = options.template;        
     },
 
-    render: function() {
+    render: function() {        
         var rendered = Mustache.render(this.$template.html(), this.model.toJSON());
         this.$el.html(rendered);
         return this;

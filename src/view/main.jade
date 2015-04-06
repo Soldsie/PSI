@@ -16,6 +16,11 @@ html(lang='en')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js')
         script(src='http://cdn.lukej.me/backbone.epoxy/1.2/backbone.epoxy.min.js')
+
+        script(src='http://code.highcharts.com/highcharts.js')
+        script(src='http://code.highcharts.com/highcharts-more.js')
+        script(src='http://code.highcharts.com/modules/exporting.js')
+
     body
         // --- category template ---
         script(id='template-cat', type='html/template')
@@ -28,7 +33,7 @@ html(lang='en')
             div(class='row')
                 div(class='col-xs-2 col-md-2')
                     p(style='font-size: 16px; font-weight: bold; margin-right: 10px;')= '{{rank}}'
-                div(class='col-xs-4 col-md-4')
+                div(class='col-xs-4 col-md-4', id='pop-over-{{rank}}')
                     span
                         a(href='{{url}}', target='_blank')
                             img(src='/image/brand-logo/{{logo}}', width=150, height=150, style='margin-right: 10px;')
@@ -78,5 +83,14 @@ html(lang='en')
         script(src='/script/category/category-model.js')
         script(src='/script/category/category-view.js')
         script(src='/script/rank/rank-model.js')
-        script(src='/script/rank/rank-view.js')
+        script(src='/script/rank/rank-view.js')        
+        script(src='/script/graph/graph-model.js')
+        script(src='/script/graph/graph-view.js')
         script(src='/script/main.js')
+
+
+        <div id="graph-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+

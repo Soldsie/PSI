@@ -2,14 +2,14 @@ window.psi = window.psi || {};
 window.psi.view = window.psi.view || {};
 
 window.psi.view.RankItemView = Backbone.Epoxy.View.extend({
-    tagName: 'li',
-    className: 'list-group-item',
+    tagName: 'div',
+    className: 'brand',
     initialize: function(options) {
-        this.model = options.model;        
-        this.$template = options.template;        
+        this.model = options.model;
+        this.$template = options.template;
     },
 
-    render: function() {        
+    render: function() {
         var rendered = Mustache.render(this.$template.html(), this.model.toJSON());
         this.$el.html(rendered);
         return this;
@@ -21,7 +21,7 @@ window.psi.view.RankView = Backbone.Epoxy.View.extend({
         this.model = options.model;
         this.el = options.el;
         this.$rankTemplate = options.rankTemplate;
-        this.render();        
+        this.render();
     },
 
     render: function() {

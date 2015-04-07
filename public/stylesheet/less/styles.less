@@ -1,3 +1,132 @@
+@import "elements.less";
+
+@blue: #4795C1;
+
 h1 {
+	font-size: 35px;
     color: #ff3e96;
+    font-weight: 800;
+    color: @blue;
+}
+
+body, html {
+	font-family: 'Lato', sans-serif;
+}
+
+.navbar {
+	background: @blue;
+	color: #FFFFFF;
+	.rounded(4px);
+
+	.cat-wrapper a.nav-link {
+		color: #FFFFFF;
+		font-weight: 700;
+	}
+
+	.cat-wrapper.active a {
+		background: rgba(255, 255, 255, 0.2);
+	}
+}
+
+#rank-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.brands-container {
+	background: #F1F1F1;
+	padding: 25px 0px;
+}
+
+.brand {
+	width: 25%;
+	padding: 12px;
+	float: left;
+
+	.brand-int {
+		background: #FFFFFF;
+		position: relative;
+		overflow: hidden;
+		.drop-shadow(1px, 1px, 2px, 0.15);
+		.rounded(4px);
+	}
+
+	.brand-image-frame {
+		width: 100%;
+		height: 150px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.brand-image-frame .brand-image {
+		background-repeat: no-repeat;
+	    background-size: cover;
+	    position: absolute;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    width: 100%;
+	    height: 100%;
+	}
+
+	.brand-score {
+		background: @blue;
+		color: #FFFFFF;
+		font-weight: 700;
+		font-size: 18px;
+		text-align: center;
+		position: relative;
+
+		.score-frame {
+			padding: 15px;
+			position: relative;
+			z-index: 2;
+			text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+		}
+
+		.sample-graph {
+			background: url(/image/graph.png);
+			background-repeat: no-repeat;
+		    background-size: cover;
+		    position: absolute;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    height: 100%;
+		    width: 100%;
+		}
+	}
+
+	.brand-breakdown {
+		width: 100%;
+		padding: 20px;
+
+		.breakdown-seperator {
+			width: 100%;
+			height: 0px;
+			padding-top: 10px;
+			margin-bottom: 10px;
+			border-bottom: 1px solid #DFDFDF;
+			float: left;
+		}
+
+		.breakdown-stat {
+			width: 50%;
+			text-align: left;
+			font-size: 16px;
+			font-weight: 800;
+			color: #ABABAB;
+			float: left;
+
+			.breakdown-stat-title {
+				font-size: 11px;
+				font-weight: 300;
+			}
+		}
+	}
+
+	.brand-breakdown:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
 }

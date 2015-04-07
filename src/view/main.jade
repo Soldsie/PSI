@@ -21,6 +21,8 @@ html(lang='en')
         script(src='http://code.highcharts.com/highcharts-more.js')
         script(src='http://code.highcharts.com/modules/exporting.js')
 
+        link(href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900', rel='stylesheet', type='text/css')
+
     body
         // --- category template ---
         script(id='template-cat', type='html/template')
@@ -30,26 +32,50 @@ html(lang='en')
             | {{/categories}}
         // --- result list template ---
         script(id='template-rl', type='html/template')
-            div(class='row')
-                div(class='col-xs-2 col-md-2')
-                    p(style='font-size: 16px; font-weight: bold; margin-right: 10px;')= '{{rank}}'
-                div(class='col-xs-4 col-md-4', id='pop-over-{{rank}}')
-                    span
-                        a(href='{{url}}', target='_blank')
-                            img(src='/image/brand-logo/{{logo}}', width=150, height=150, style='margin-right: 10px;')
-                    span(style='font-size: 20px; font-weight: bold;')= '{{brandName}}'
-                div(class='col-xs-2 col-md-2')
-                    span(class='badge')= '{{score}}'
-                div(class='col-xs-1 col-md-1')
-                    span(class='badge')= '{{likes}}'
-                div(class='col-xs-1 col-md-1')
-                    span(class='badge')= '{{comments}}'                    
-                div(class='col-xs-1 col-md-1')
-                    span(class='badge')= '{{tweets}}'
-                div(class='col-xs-1 col-md-1')
-                    span(class='badge')= '{{retweets}}'                    
 
-        // ======= actual HTML content ========    
+            // {{brandName}}
+            // {{rank}}
+
+            div(class='brand-int')
+                div(class='brand-image-frame')
+                    a(href='{{url}}', target='_blank')
+                        span(class='brand-image', style='background-image: url(/image/brand-logo/{{logo}});')
+
+                div(class='brand-score')
+                    div(class='sample-graph')
+
+                    div(class='score-frame')
+                        {{score}}
+
+                div(class='brand-breakdown')
+
+                    div(class='breakdown-stat')
+                        div
+                            {{likes}}
+                            div(class='breakdown-stat-title')
+                                | Likes
+
+                    div(class='breakdown-stat')
+                        div
+                            {{comments}}
+                            div(class='breakdown-stat-title')
+                                | Comments
+
+                    div(class='breakdown-seperator')
+
+                    div(class='breakdown-stat')
+                        div
+                            {{tweets}}
+                            div(class='breakdown-stat-title')
+                                | Tweets
+
+                    div(class='breakdown-stat')
+                        div
+                            {{retweets}}
+                            div(class='breakdown-stat-title')
+                                | Retweets
+
+        // ======= actual HTML content ========
         div(class='container')
             div(class='row')
                 div(class='col-xs-12 col-md-12')
@@ -59,31 +85,20 @@ html(lang='en')
                     nav(class='navbar navbar-default navbar-static-top')
                         div(class='container')
                             div(class='navbar-header')
-                                h4 Categories
                             ul(id='cat-container', class='nav navbar-nav')
-                // === rank list view ===
-                div(id='rank-container', class='col-xs-12 col-md-12')                
-                    div(class='row')
-                        div(class='col-xs-2 col-md-2')
-                            h4 Rank
-                        div(class='col-xs-4 col-md-4')
-                            h4 Brand
-                        div(class='col-xs-2 col-md-2')
-                            h4 Score
-                        div(class='col-xs-1 col-md-1')
-                            h4 Likes
-                        div(class='col-xs-1 col-md-1')
-                            h4 Comments                        
-                        div(class='col-xs-1 col-md-1')
-                            h4 Tweets
-                        div(class='col-xs-1 col-md-1')
-                            h4 Retweets
+
+        div(class='brands-container')
+            div(class='container')
+                div(class='row')
+                    div(class='col-xs-12 col-md-12')
+                        // === rank list view ===
+                        div(id='rank-container', class='col-xs-12 col-md-12')
 
         // category view
         script(src='/script/category/category-model.js')
         script(src='/script/category/category-view.js')
         script(src='/script/rank/rank-model.js')
-        script(src='/script/rank/rank-view.js')        
+        script(src='/script/rank/rank-view.js')
         script(src='/script/graph/graph-model.js')
         script(src='/script/graph/graph-view.js')
         script(src='/script/main.js')

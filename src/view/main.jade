@@ -93,10 +93,15 @@ html(lang='en')
                     div(class='col-xs-12 col-md-12')
                         // === rank list view ===
                         div(id='rank-container', class='col-xs-12 col-md-12')
-        div(class='container')
-            div(class='row')
-                div(class='col-xs-12 col-md-12')
-                    div(id="graph-container" style="min-width: 310px; height: 400px; margin: 0 auto")
+
+        div(class='modal fade', id='graph-modal')
+            .modal-dialog
+                .modal-content      
+                  div(class="modal-body", id="graph-container")
+                          
+                  .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+                
 
 
         // category view

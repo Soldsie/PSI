@@ -19,22 +19,29 @@ window.psi.view.RankItemView = Backbone.Epoxy.View.extend({
     },
 
     showGraph: function() {
-        console.log('show graph called');
-        var tag = this.model.get('brandName').replace(/ /, '') + 'purse';
-        console.log(tag)
-        this.graph = new window.psi.model.Graph({tag: tag.toLowerCase()});
-        this.graph.fetch({
-            success: function(model) {
-                console.log("SUCCESS");
-                var graphView = new window.psi.view.GraphView({
-                    model: model,
-                    el: $('#graph-container')
-                });
-            },
-            error: function(model, response, options) {
-                console.log('Error fetching model: ' + JSON.stringify(response, null, 4));
-            }
-        })
+        var _self = this;
+
+        // Clear it
+        $('#graph-container').html('<div class="ajax-loader"><div class="loader"></div></div>');
+
+        $('#graph-modal').modal('toggle').on('shown.bs.modal', function () {
+            console.log('show graph called');
+            var tag = _self.model.get('brandName').replace(/ /, '') + 'purse';
+            console.log(tag)
+            _self.graph = new window.psi.model.Graph({tag: tag.toLowerCase()});
+            _self.graph.fetch({
+                success: function(model) {
+                    console.log("SUCCESS");
+                    var graphView = new window.psi.view.GraphView({
+                        model: model,
+                        el: $('#graph-container')
+                    });
+                },
+                error: function(model, response, options) {
+                    console.log('Error fetching model: ' + JSON.stringify(response, null, 4));
+                }
+            });
+        });
     }
 });
 

@@ -38,12 +38,9 @@ window.psi.view.GraphView = Backbone.Epoxy.View.extend({
                 title: {
                     text: 'PSI Index'
                 },
-                // subtitle: {
-                //     text: 'Irregular time data in Highcharts JS'
-                // },
                 xAxis: {
                     type: 'datetime',
-                    dateTimeLabelFormats: { // don't display the dummy year
+                    dateTimeLabelFormats: {
                         month: '%e. %b',
                         year: '%b'
                     },
@@ -73,9 +70,6 @@ window.psi.view.GraphView = Backbone.Epoxy.View.extend({
                 series: [{
                     name: 'Instagram Posts',
                     data: media
-                }, {
-                    name: 'Instagram Comments',
-                    data: comments
                 }, {
                     name: 'Tweets',
                     data: tweets

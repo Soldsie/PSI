@@ -16,12 +16,12 @@ var groupTweetsByDate = function(tag, callback) {
     var brand = tag.split('purse');
     var q = brand[0] + ' purse';
 
-    query = Tweet.find().where('q').equals(q).limit(1000);
+    query = Tweet.find().where('q').equals(q);
   }
   else {
     console.log('no tag');
 
-    query = Tweet.find().limit(1000);
+    query = Tweet.find();
   }
 
   query.exec(function(err, results) {
@@ -49,10 +49,10 @@ var groupTweetsByDate = function(tag, callback) {
 var groupMediaByDate = function(tag, callback) {
   var query;
   if(tag) {
-    query = Media.find().where('tag').equals(tag).limit(1000);
+    query = Media.find().where('tag').equals(tag);
   }
   else {
-    query = Media.find().limit(1000);
+    query = Media.find();
   }
 
   query.exec(function(err, results) {
@@ -83,7 +83,7 @@ var groupCommentsByDate = function(tag, callback) {
     return
   }
 
-  var query = Comment.find().limit(1000);
+  var query = Comment.find();
 
   query.exec(function(err, results) {
 

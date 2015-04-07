@@ -2,14 +2,8 @@
 
 @blue: #4795C1;
 
-h1 {
-	font-size: 35px;
-    color: #ff3e96;
-    font-weight: 800;
-    color: @blue;
-}
-
 body, html {
+	background: #F1FAFF;
 	font-family: 'Lato', sans-serif;
 }
 
@@ -25,6 +19,47 @@ body, html {
 		left: 50%;
 		margin-top: -16px;
 		margin-left: -16px;
+	}
+}
+
+.header {
+	background: @blue;
+	padding: 45px 0px;
+	margin-bottom: 25px;
+	position: relative;
+
+	.logo {
+		background: url(/image/logo.png);
+		width: 191px;
+		height: 46px;
+		margin-bottom: 25px;
+	}
+
+	.nav-right {
+		color: #FFFFFF;
+
+		span, strong {
+			margin-left: 12px;
+		}
+	}
+
+	h1, h2 {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	h1 {
+		color: #FFFFFF;
+		font-size: 45px;
+		font-weight: 300;
+		padding-bottom: 5px;
+	}
+
+	h2 {
+		color: #FFFFFF;
+		font-size: 21px;
+		font-weight: 300;
+		.opacity(0.5);
 	}
 }
 
@@ -50,7 +85,6 @@ body, html {
 }
 
 .brands-container {
-	background: #F1F1F1;
 	padding: 25px 0px;
 }
 
@@ -149,4 +183,16 @@ body, html {
 	  display: table;
 	  clear: both;
 	}
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
 }

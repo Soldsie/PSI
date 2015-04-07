@@ -41,7 +41,7 @@ html(lang='en')
                     a(href='{{url}}', target='_blank')
                         span(class='brand-image', style='background-image: url(/image/brand-logo/{{logo}});')
 
-                div(class='brand-score')
+                div(class='brand-score' id='brand-score-{{rank}}')
                     div(class='sample-graph')
 
                     div(class='score-frame')
@@ -93,6 +93,11 @@ html(lang='en')
                     div(class='col-xs-12 col-md-12')
                         // === rank list view ===
                         div(id='rank-container', class='col-xs-12 col-md-12')
+        div(class='container')
+            div(class='row')
+                div(class='col-xs-12 col-md-12')
+                    div(id="graph-container" style="min-width: 310px; height: 400px; margin: 0 auto")
+
 
         // category view
         script(src='/script/category/category-model.js')
@@ -104,7 +109,6 @@ html(lang='en')
         script(src='/script/main.js')
 
 
-        <div id="graph-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 
 

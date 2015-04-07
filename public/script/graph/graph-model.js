@@ -5,6 +5,11 @@ window.psi.model.Graph = Backbone.Model.extend({
     defaults: {
       tag: ''
     },
+
+    initialize: function(options) {
+      
+    },
+
     url: function() {
       return '/api/graph/' + this.get('tag');
     }

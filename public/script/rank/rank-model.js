@@ -19,5 +19,9 @@ window.psi.model.Rank = Backbone.Model.extend({
         ranking: []
     },
 
+    initialize: function(options) {
+
+    },
+
     url: '/api/rank/purse'
 });

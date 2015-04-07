@@ -89,10 +89,6 @@ window.psi.view.GraphView = Backbone.Epoxy.View.extend({
     },
 
     render: function() {
-        var rendered = Mustache.render(
-            this.$template.html(), 
-            {categories: this.categories}
-        );
-        this.$el.find('#cat-container').html(rendered);
+        // this.$el.find('#cat-container').html(rendered);
     }
 });

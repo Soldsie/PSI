@@ -10,7 +10,7 @@ var buildGraph = function buildGraph(req, res) {
     var tag = req.params.tag || '';
 
     graphData.cumulativeData(tag, function(err, result) {
-        console.log(result);    
+        // console.log(result);    
         res.json({
             data: result
         });
